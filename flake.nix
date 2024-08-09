@@ -2,7 +2,9 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "https://github.com/NixOS/nixpkgs/commit/2cd969c1086dc66a1d6f206d28c3d901d94d9a6e";
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs/2cd969c1086dc66a1d6f206d28c3d901d94d9a6e";
+    };
   };
 
   outputs = inputs@{ nixpkgs, home-manager, ... }: 

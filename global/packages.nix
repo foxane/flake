@@ -1,8 +1,8 @@
 {config, pkgs, ...}:
 
 {
-  environment.packages = with pkgs; [
-    clouflare-warp
+  environment.systemPackages = with pkgs; [
+    cloudflare-warp
     brave
     vscode-fhs
     spotube
@@ -14,7 +14,7 @@
     git
   ];
 
-  virtualization.docker.enable = true;
+  virtualisation.docker.enable = true;
 
   programs= {
 
@@ -23,14 +23,14 @@
       config = {
         init.defaultBranch = "main";
         user.name = "foxane";
-        user.email = "65512187+foxane@users.noreply.github.com"
+        user.email = "65512187+foxane@users.noreply.github.com";
       };
     };
 
     zsh = {
       enable = true;
       enableCompletion = true;
-      autosuggestion.enable = true;
+      autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
     };
 

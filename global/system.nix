@@ -5,7 +5,10 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
     loader = {
-      efi.canTouchEfiVariables = true;
+      efi = {
+	canTouchEfiVariables = true;
+	efiSysMountPoint = "/boot/efi";
+      };
       grub = {
         efiSupport = true;
         device = "nodev";
@@ -69,6 +72,9 @@
 
   # Enable jakoolit hyprland dots
   services.envfs.enable = true;
+
+  # Allow unfree
+  nixpkgs.config.allowUnfree = true;
 
   # Line below doesnt exist
   system.stateVersion = "24.05";
