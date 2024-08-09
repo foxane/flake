@@ -6,8 +6,8 @@
     kernelPackages = pkgs.linuxPackages_zen;
     loader = {
       efi = {
-	canTouchEfiVariables = true;
-	efiSysMountPoint = "/boot/efi";
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot/efi";
       };
       grub = {
         efiSupport = true;
@@ -16,13 +16,9 @@
     };
     plymouth = {
       enable = true;
-      theme = "rings";
-      themePackages = with pkgs; [
-        # By default we would install all themes
-        (adi1090x-plymouth-themes.override {
-          selected_themes = [ "rings" ];
-        })
-      ];
+      font = "${pkgs.jetbrains-mono}/share/fonts/truetype/JetBrainsMono-Regular.ttf";
+      themePackages = [ pkgs.catppuccin-plymouth ];
+      theme = "catppuccin-macchiato";
     };
 
     # Enable "Silent Boot"
@@ -74,10 +70,6 @@
   services.envfs.enable = true;
   
   services.xserver.enable = true;
-
-
-  # Allow unfree
-  nixpkgs.config.allowUnfree = true;
 
   # Line below doesnt exist
   system.stateVersion = "24.05";

@@ -1,6 +1,8 @@
 {config, pkgs, ...}:
 
 {
+  environment.shells = pkgs.zsh;
+
   environment.systemPackages = with pkgs; [
     cloudflare-warp
     brave
@@ -35,4 +37,15 @@
     };
 
   };
+
+  # FONTS
+  fonts.packages = with pkgs; [
+    noto-fonts
+    fira-code
+    noto-fonts-cjk
+    jetbrains-mono
+    font-awesome
+		terminus_font
+    (nerdfonts.override {fonts = ["JetBrainsMono"];})
+ 	];
 }
