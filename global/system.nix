@@ -4,7 +4,6 @@
   # Bootloader
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
-    kernelParams = [ "quiet" "splash" ];
     loader = {
       efi.canTouchEfiVariables = true;
       grub = {
@@ -12,16 +11,30 @@
         device = "nodev";
       };
     };
-    plymouth.enable = true;
-  };
+    plymouth = {
+      enable = true;
+      theme = "rings";
+      themePackages = with pkgs; [
+        # By default we would install all themes
+        (adi1090x-plymouth-themes.override {
+          selected_themes = [ "rings" ];
+        })
+      ];
+    };
 
-  # Base packages
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-    curl
-    git
-  ];
+    # Enable "Silent Boot"
+    consoleLogLevel = 0;
+    initrd.verbose = false;
+    kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "loglevel=3"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
+    ];
+  };
 
   # Networking
   networking.networkmanager.enable = true;
@@ -54,5 +67,9 @@
   # Enable flake
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Enable jakoolit hyprland dots
+  services.envfs.enable = true;
+
+  # Line below doesnt exist
   system.stateVersion = "24.05";
 }
