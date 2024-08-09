@@ -50,26 +50,17 @@
     xkbVariant = "";
   };
 
-  # User account
-  users.users.foxane = {
-    isNormalUser = true;
-    description = "Foxane";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "libvirt"
-      "input"
-    ];
-    packages = with pkgs; [];
-  };
-
   # Enable flake
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Enable jakoolit hyprland dots
   services.envfs.enable = true;
   
+  # Idk why but hyprland wont start without this
   services.xserver.enable = true;
+
+  # Non gnu slash lunik free sofwer
+  nixpkgs.config.allowUnfree = true;
 
   # Line below doesnt exist
   system.stateVersion = "24.05";
