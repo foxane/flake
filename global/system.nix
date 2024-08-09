@@ -72,6 +72,9 @@
 
   # Enable jakoolit hyprland dots
   services.envfs.enable = true;
+  
+  services.xserver.enable = true;
+
 
   # Allow unfree
   nixpkgs.config.allowUnfree = true;

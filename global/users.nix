@@ -4,6 +4,8 @@
   users.users.foxane = {
     isNormalUser = true;
     description = "Foxane";
+    shell = pkgs.zsh;
+    initialPassword = "password";
     extraGroups = [
       "networkmanager"
       "wheel"
