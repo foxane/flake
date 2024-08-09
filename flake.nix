@@ -16,7 +16,7 @@
           system = "${system}";
           modules = [
             ./hosts/shalltear/system.nix
-            global
+            ./global
           ];
         };
 
@@ -25,7 +25,7 @@
           system = "${system}";
           modules = [
             ./hosts/vm/system.nix
-            global
+            ./global
           ];
           
         };
